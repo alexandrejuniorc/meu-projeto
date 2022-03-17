@@ -1,19 +1,24 @@
 import './App.css';
-import HelloWord from './components/HelloWord';
-import Pessoa from './components/Pessoa';
-import SayMyName from './components/SayMyName';
-import Frase from './components/Frase';
-import List from './components/List';
-import Evento from './components/Evento';
-import Form from './components/Form';
-import Condicional from './components/Condicional';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Empresa from './pages/Empresa';
+import Contato from './pages/Contato';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Renderização Condicional</h1>
-      <Condicional />
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        {/* Sintaxe para passar a rota de uma página */}
+        {/* A página home só irá funcionar quando tiver somente /, pois sem ele, ele sempre irá acessar a Home */}
+        <Route exact path="/" element={<Home />} />
+        <Route path="/empresa" element={<Empresa />} />
+        <Route path="/contato" element={<Contato />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
